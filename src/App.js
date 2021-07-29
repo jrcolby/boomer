@@ -35,6 +35,8 @@ const loPass = new Tone.Filter({
 
 const distort = new Tone.Distortion(2);
 
+const clickSampler = new Tone.Sampler();
+
 
 membraneKick.chain(hiPass, distort, loPass, Tone.Destination);
 
