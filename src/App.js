@@ -67,6 +67,7 @@ const bitcrushLevel = [
  */
 let kickParams = makeKickParams();
 let membraneKick = generateSynth(kickParams);
+console.log(kickParams);
 
 let clickSampler = new Tone.Sampler({
   urls: {
@@ -79,16 +80,19 @@ let clickVol = new Tone.Volume(0 - getRandomBounded(20, 60));
 
 //  Init devices for effects chain
 let loPass = generateFilter(kickParams);
+
 let hiPass = new Tone.Filter({
   type: "highpass",
   frequency: 20,
   rolloff: -24,
 });
-let distort = new Tone.Distortion(0.2);
-let crusher = new Tone.BitCrusher(16);
+
+let distort = new Tone.Distortion(kickParams.distortLevel);
+let crusher = new Tone.BitCrusher(kickParams.bitcrushLevel);
 let limiter = new Tone.Limiter(0);
 let master = new Tone.Channel(0, 0);
-
+membraneKick.chain(distort, master);
+clickSampler.chain(clickVol, master);
 master.chain(hiPass, loPass, limiter, Tone.Destination);
 
 function App() {
@@ -98,16 +102,20 @@ function App() {
   function loopStep(time) {
     clickSampler.triggerAttackRelease(kickParams.clickSample, 0.001, time);
     console.log("GO");
-    membraneKick.triggerAttackRelease(80, "4n", time);
+    membraneKick.triggerAttackRelease(kickParams.frequency, "4n", time);
   }
 
   function makeKick() {
     Tone.Transport.stop();
-    membraneKick = generateSynth();
-    loPass = generateFilter();
-    distort.distortion = getWeightedValue(distortionLevel);
+    kickParams = makeKickParams();
+    membraneKick = generateSynth(kickParams);
+    loPass = generateFilter(kickParams);
+    distort = new Tone.Distortion(kickParams.distortLevel);
+    crusher = new Tone.BitCrusher(kickParams.bitcrushLevel);
     membraneKick.chain(distort, master);
     clickSampler.chain(clickVol, master);
+
+    // make a single loop step that plays once.
   }
 
   function playKick() {
@@ -149,11 +157,11 @@ function makeKickParams() {
   return params;
 }
 
-function generateFilter(kp) {
+function generateFilter(kickParams) {
   return new Tone.Filter({
-    type: kp.filterType,
-    frequency: kp.filterFreq,
-    rolloff: kp.filterRolloff,
+    type: kickParams.filterType,
+    frequency: kickParams.filterFreq,
+    rolloff: kickParams.filterRolloff,
   });
 }
 
@@ -175,15 +183,15 @@ function getRandomBounded(min, max) {
 
 function generateSynth(kickParams) {
   return new Tone.MembraneSynth({
-    octaves: getRandomBounded(1, 5),
+    octaves: kickParams.octaves,
     envelope: {
-      attack: 0,
-      decay: getRandomBounded(0, 0.5),
-      sustain: 0,
+      attack: kickParams.attack,
+      decay: kickParams.decay,
+      sustain: kickParams.sustain,
     },
-    pitchDecay: getRandomBounded(0, 0.3),
+    pitchDecay: kickParams.pitchDecay,
     oscillator: {
-      type: getWeightedValue(oscillators),
+      type: kickParams.waveform,
     },
   });
 }
