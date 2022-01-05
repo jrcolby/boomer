@@ -66,10 +66,16 @@ let hiPass = new Tone.Filter({
 
 // make a MediaRecorder to connect chain to as well
 const actx = Tone.context;
+const dest = actx.createMediaStreamDestination();
+const recorder = new MediaRecorder(dest.stream, {
+	'type': 'audio/wav',
+});
+
 
 membraneKick.chain(distort, master);
 clickSampler.chain(clickVol, master);
 master.chain(hiPass, loPass, limiter, Tone.Destination);
+master.connect(dest);
 
 function makeKickChain(kickParams) {
 
@@ -93,6 +99,7 @@ function makeKickChain(kickParams) {
 		sampler: clickSampler,
 		sample: kickParams.clickSample,
 		channel: master,
+		recorder: recorder,
 	};
 	return chain
 }
