@@ -1,8 +1,8 @@
 import React from 'react'
-import Button from './Button'
-import makeKickParams from "../functions/makeKickParams"
-import makeKickChain from "../functions/makeKickChain"
-import playKick from "../functions/playKick"
+import Button from '../Button'
+import makeKickParams from "../../functions/makeKickParams"
+import makeKickChain from "../../functions/makeKickChain"
+import playKick from "../../functions/playKick"
 const MakeKick = ({ kickParams, onKickChange, setKickChain }) => {
 
 	const handleNewKick = () => {
@@ -13,8 +13,8 @@ const MakeKick = ({ kickParams, onKickChange, setKickChain }) => {
 		playKick(newChain)
 	}
 	return (
-		<Button handler={handleNewKick} label="Make Kick " />
+		<Button handler={handleNewKick} label="Make Kick" />
 	)
 }
-
 export default MakeKick
+

@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&display=swap');
+
+body{
+	color: #2A2829;
+	font-family: 'DM Mono', monospace;
+	color: white;
+}
+
+.container {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: flex-start;
+	background-color: #626261;
+	height: 100vh;
+}
+
+.header{
+	display: flex;
+	letter-spacing: 1rem;
+	padding: 0 0 0 1rem;
+	justify-content: center;
+	border-radius: 10px;
+	align-items: center;
+	background-color: #F23747;
+	width: 92%;
+	font-size: 4rem;
+	margin:1rem 0 2rem 0;
+	color: #FFFDEF;
+
+	@media screen and(min-width:800px){
+		letter-spacing: 3rem;
+		width: 92%;
+		max-width: 55rem;
+		margin: 5rem 0 5rem 0;
+	}
+}
+
+.footer{
+	display: flex;
+	justify-content: space-between;
+	padding: 0rem 1rem 0rem 1rem;
+	border-radius: 10px;
+	width: 80%;
+	margin: 8rem 0 1rem 0;
+	align-items: flex-end;
+	background-color: #5068EC;
+	font-size: 1rem;
+
+	@media screen and(min-width:800px){
+		width: 92%;
+		max-width: 50rem;
+		margin: 10rem 0 0 0;
+
+	}
+}
+
+a{
+	color: white;
+}

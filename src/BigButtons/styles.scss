@@ -1,0 +1,83 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&display=swap');
+
+.buttons-container{
+	display: flex;
+	flex-direction: column;
+	
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	@media screen and (min-width: 800px){
+		flex-direction: row;
+		height:10em;
+		justify-content:space-around;
+		align-items:center;
+	}
+}
+
+.big-button{
+	width: 100%;
+	height: 5rem;
+	font-family: 'DM Mono', monospace;
+	text-transform: uppercase;
+	//padding: 1rem 2rem 1rem 2rem;
+	border: none;
+	cursor: pointer;
+	margin: 1rem;
+	font-size: 2rem;
+	border-radius: 15px;
+	background-color: #FFAD3B;
+	color: #FFFDEF;
+
+	&:hover {
+		border: 1px solid white;
+		color: white;
+	}
+
+	&:active{
+		transform: scale(0.98) translate(0%, -2.5%);
+	}
+	
+	@media screen and (min-width: 800px){
+		width: 15rem;
+		height: 10rem;
+		font-size: 2rem;
+	}
+}
+
+
+
+
+//.buttons-container{
+//	flex-direction: row;
+//	flex: 3;
+//	display: flex;
+//	height: 10em;
+//	justify-content: space-around;
+//	align-items: center;
+//}
+
+//.big-button{
+//	width: 15rem;
+//	height: 100%;
+//	font-family: 'DM Mono', monospace;
+//	text-transform: uppercase;
+//	//padding: 1rem 2rem 1rem 2rem;
+//	border: none;
+//	cursor: pointer;
+//	margin: 1rem;
+//	font-size: 2rem;
+//	border-radius: 15px;
+//	background-color: #FFAD3B;
+//	color: #FFFDEF;
+
+//	&:hover {
+//		border: 1px solid white;
+//		color: white;
+//	}
+
+//	&:active{
+//		transform: scale(0.98) translate(0%, -2.5%);
+//	}
+//}
