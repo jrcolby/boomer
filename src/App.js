@@ -1,5 +1,4 @@
 import React from 'react'
-import { useKickUpdate } from './KickContext'
 import BigButtons from './BigButtons'
 import './App.scss'
 import { KickProvider } from './KickContext'
