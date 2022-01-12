@@ -88,7 +88,7 @@ function makeKickParams() {
 		filterRolloff: -12,
 		filterType: "lowpass",
 		clickSample: getWeightedValue(clickTypes),
-		clickVol: 0 - getRandomBounded(40, 60),
+		clickVol: 0 - getRandomBounded(30, 50),
 		distortLevel: getWeightedValue(distortionLevel),
 	};
 	return params;

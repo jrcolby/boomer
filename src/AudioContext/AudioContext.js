@@ -15,7 +15,7 @@ const clickSampler = new Tone.Sampler({
 		C4: woodblock,
 		C5: clave,
 		D5: click,
-		E5: hihat,
+		//E5: hihat,
 	},
 });
 
@@ -57,7 +57,7 @@ console.log(kickSynth)
 // function to play the actual kick!!
 export const playKick = (sample, frequency) => {
 	console.log("playKick: with param freq ", frequency)
-	clickSampler.triggerAttackRelease(sample, 0.21);
+	clickSampler.triggerAttackRelease(sample, 0.11);
 	kickSynth.triggerAttackRelease(frequency, "8n");
 	console.log(kickSynth.oscillator.type)
 };
