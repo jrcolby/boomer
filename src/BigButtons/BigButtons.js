@@ -12,7 +12,7 @@ const BigButtons = () => {
 		<div className="buttons-container">
 			<BigButton label="Generate" use="make" isRecording={isRecording} setIsRecording={setIsRecording} />
 			<BigButton label="Play" use="play" isRecording={isRecording} setIsRecording={setIsRecording} />
-			<BigButton label="Record" use="download" isRecording={isRecording} setIsRecording={setIsRecording} />
+			<BigButton label="Download" use="download" isRecording={isRecording} setIsRecording={setIsRecording} />
 		</div>
 	)
 }
