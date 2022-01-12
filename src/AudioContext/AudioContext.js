@@ -15,7 +15,7 @@ const clickSampler = new Tone.Sampler({
 		C4: woodblock,
 		C5: clave,
 		D5: click,
-		//E5: hihat,
+		E5: hihat,
 	},
 });
 
